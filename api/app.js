@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
+const cors = require("cors");
 
 const apiRouter = require("./routes/apiRouter");
 const errorHandler = require("./middlewares/errorHandlerMiddleware");
@@ -11,6 +12,10 @@ const errorHandler = require("./middlewares/errorHandlerMiddleware");
 const app = express();
 
 app.use(logger("dev"));
+
+app.use(cors({
+    origin: "http://localhost:3000",
+}))
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
