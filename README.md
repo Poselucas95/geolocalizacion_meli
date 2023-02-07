@@ -30,6 +30,11 @@ Las estadísticas sobre el uso del servicio se almacenan en la base de datos y s
 Se colocaron las conexiones y keys desde variables de entorno directamente en el archivo docker-compose.yml. 
 En un ambiente productivo esto no se debe realizar ya que se estarían exponiendo datos de acceso, los cuales deben ser inyectados al contenedor de forma segura
 
+## Apis externas utilizadas:
+- Geolocalización de IPs: https://ip2country.info/
+- Información de paises: https://restcountries.com/#api-endpoints-v3-all
+- Información sobre monedas: http://fixer.io/
+
 ## Api: 
 ```
 /api/statistics (GET)
