@@ -1,0 +1,18 @@
+.header {
+  background-color: #fff159;
+  height: 75px;
+
+  &-logo {
+    background-image: url(https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/5.21.22/mercadolibre/logo__large_plus.png);
+    height: 34px;
+    top: 11px;
+    width: 134px;
+    margin: 16px 24px 16px 0;
+    background-repeat: no-repeat;
+  }
+
+  &-tittle {
+    margin: 16px 24px 16px 0;
+    color: #323a7a !important;
+  }
+}
