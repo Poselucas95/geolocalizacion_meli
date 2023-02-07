@@ -1,0 +1,52 @@
+version: "3"
+services:
+  api:
+    build: ./api
+    ports:
+      - "3001:3001"
+    environment:
+      ENVIRONMENT: production
+      REDIS_PORT: 6379
+      REDIS_HOST: cache
+      MYSQL_PORT: 3306
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: meli_challenge
+      MYSQL_HOST: db
+      API_IP_GEO_KEY: 73f64463d0b3205fdfa19e7c92609331
+      API_CURRENCY_KEY: 7mgpun4J3grR9bf6owYpKWoZaCMfVnNB
+    networks:
+      - meli
+
+  web:
+    build: ./web
+    ports:
+      - "3000:3000"
+    networks:
+      - meli
+
+  db:
+    platform: linux/amd64
+    image: mysql:5.7
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: test123
+      MYSQL_DATABASE: meli_challenge
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./create-table.sql:/docker-entrypoint-initdb.d/create-table.sql
+    networks:
+      - meli
+
+  cache:
+    image: redis:6.2
+    ports:
+      - "6379:6379"
+    networks:
+      - meli
+
+networks:
+  meli:
+    driver: bridge
